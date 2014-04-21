@@ -86,10 +86,12 @@ function render($view, $vars)
                 <select name="type" id="">
                     <option value="" selected>Loại demo</option>
                     <option value="1">Biến</option>
-                    <option value="1">Mảng</option>
-                    <option value="2">Chuỗi</option>
-                    <option value="3">Hàm</option>
-                    <option value="3">Vòng lặp</option>
+                    <option value="2">Mảng</option>
+                    <option value="3">Chuỗi</option>
+                    <option value="4">Hàm</option>
+                    <option value="5">Vòng lặp</option>
+                    <option value="6">Javascript</option>
+                    <option value="7">JQuery</option>
                 </select>
                 <input type='submit' id='submit-form' value="Submit»">
             </div>
