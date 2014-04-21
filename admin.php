@@ -18,7 +18,7 @@ function render($view, $vars)
     <link rel="shortcut icon"
           href="http://sohagame.vn/wp-content/themes/sohahome/shg_frontend/images/website/favicon.ico"
           type="image/x-icon"/>
-    <link href="style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body style="background-color:#e5eecc;margin: 0;" cz-shortcut-listen="true">
 <div id="lecture" style="padding: 37px 550px;">

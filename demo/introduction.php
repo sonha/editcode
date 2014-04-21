@@ -6,7 +6,9 @@
 <body>
 
 <h1>CSS demo!</h1>
-<p>This is a paragraph.</p>
+<p>
+    <a href="http://localhost/editcode/demo/">Link bài tập</a>
+</p>
 
 </body>
 </html>

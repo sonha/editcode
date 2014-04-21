@@ -17,7 +17,7 @@ function render($view, $vars)
     <title>Coc Editor v1.0</title>
     <link rel="shortcut icon" href="http://sohagame.vn/wp-content/themes/sohahome/shg_frontend/images/website/favicon.ico" type="image/x-icon" />
 </head>
-<link href="style.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 <body style="background-color:#e5eecc;margin: 0;" cz-shortcut-listen="true">
 <div id="lecture" style="padding: 37px 550px;">
     <a href="demo">List bài tập</a>
