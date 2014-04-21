@@ -46,7 +46,7 @@ function render($view, $vars)
                 echo "Cannot write to file ($filename)";
                 exit;
             }
-            echo "<div class='headerText1'>Success, wrote to file ($filename)</div>";
+            $writable = true;
             fclose($handle);
         } else {
             echo "The file $filename is not writable";
@@ -60,10 +60,13 @@ function render($view, $vars)
                 echo "Cannot write to file ($filename_try)";
                 exit;
             }
-            echo "<div class='headerText1'>Success, wrote to file ($filename_try)</div>";
+            $writable = true;
             fclose($handle_try);
         } else {
             echo "The file $filename_try is not writable";
+        }
+        if($writable) {
+        echo "<div class='headerText1'>Success, wrote to file ($filename) and ($filename_try)</div>";
         }
     }
     ?>
