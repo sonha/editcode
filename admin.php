@@ -32,7 +32,7 @@ function render($view, $vars)
         } else {
             $txt_filename = 'noname';
         }
-        $mode = ($txt_filename = 'noname') ? "w" : "x+";
+        $mode = ($txt_filename == 'noname') ? "w" : "x+";
         $fp = fopen("demo/" . $txt_filename . ".php", $mode);
         $filename = "demo/" . $txt_filename . ".php";
         $filename_try = 'tryit.php';
