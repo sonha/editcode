@@ -82,6 +82,9 @@ function render($view, $vars)
         <div class="headerText"></div>
         <form method='post'>
             <div id="submit" style="margin-left: 249px">
+                <div id="folder">
+                    <input type="text" name="folder_name"/>
+                </div>
                 <input type="text" name="file_name"/>
                 <select name="type" id="">
                     <option value="" selected>Loại demo</option>
@@ -118,6 +121,15 @@ function render($view, $vars)
 
 <script src='ace/build/src/ace.js'></script>
 <script type="text/javascript">
+
+    $(document.ready(function(){
+
+        $('input[type="checkbox"]').click(function(){
+            if($this.attr("value") == "folder") {
+                $("#folder").toggle();
+            }
+        });
+    }));
     var $ = document.getElementById.bind(document);
     var dom = require("ace/lib/dom");
 
@@ -170,6 +182,8 @@ function render($view, $vars)
     jQuery("#use-jquery").click(function () {
         editor.insert(script.outerHTML);
     })
+
+
 </script>
 
 </body>
