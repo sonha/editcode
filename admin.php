@@ -93,6 +93,7 @@ function render($view, $vars)
         }
     } else {
         $source = file_get_contents("demo/$txt_filename.php");
+        $src_ifr = 'tryit.php';
     }
     ?>
     <div id="sourcecode">
