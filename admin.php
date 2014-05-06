@@ -100,7 +100,7 @@ function render($view, $vars)
         <form method='post'>
             <div id="submit" style="margin-left: 38px">
                 Lưu : <input type="text" name="file_name"/>
-                Load : <select name="file_name_load" id="" onchange="window.location.href='http://localhost/editcode/load2.php?file_name_load='+this.value">
+                Load : <select name="file_name_load" id="" onchange="window.location.href='http://localhost/editcode/admin.php?file_name_load='+this.value">
                     <option value="" selected>Bài demo</option>
                     <?php foreach($name_arr as $key){ ?>
                         <option value="<?php echo $key;?>"><?php echo $key;?></option>
