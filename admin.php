@@ -75,7 +75,6 @@ function render($view, $vars)
         $source = file_get_contents('demo/introduction.php');
     } else {
         $source = file_get_contents("demo/$txt_filename.php");
-
     }
     ?>
     <div id="sourcecode">
