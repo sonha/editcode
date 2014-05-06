@@ -66,13 +66,31 @@ function render($view, $vars)
             echo "The file $filename_try is not writable";
         }
         if($writable) {
-        echo "<div class='headerText1'>Success, wrote to file ($filename) and ($filename_try)</div>";
+            echo "<div class='headerText1'>Success, wrote to file ($filename) and ($filename_try)</div>";
         }
     }
     ?>
     <?php
+    $directory = "demo/";
+    //get all text files with a .txt extension.
+    $texts = glob($directory . "*.php");
+    //print each file name
+    $name_arr = array();
+    foreach($texts as $text)
+    {
+        $temp = explode('/',$text);
+        $name_arr[] = $temp[1];
+    }
     if (empty($_POST)) {
-        $source = file_get_contents('demo/introduction.php');
+        if(!empty($_GET['file_name_load'])) {
+            $file_name_load = $_GET['file_name_load'];
+            $source = file_get_contents("demo/$file_name_load");
+//            var_dump(htmlspecialchars($source));die;
+            $src_ifr = 'demo/'.$file_name_load;
+        } else {
+            $source = file_get_contents('tryit.php');
+            $src_ifr = 'tryit.php';
+        }
     } else {
         $source = file_get_contents("demo/$txt_filename.php");
     }
@@ -80,20 +98,13 @@ function render($view, $vars)
     <div id="sourcecode">
         <div class="headerText"></div>
         <form method='post'>
-            <div id="submit" style="margin-left: 249px">
-                <div id="folder">
-                    <input type="text" name="folder_name"/>
-                </div>
-                <input type="text" name="file_name"/>
-                <select name="type" id="">
-                    <option value="" selected>Loại demo</option>
-                    <option value="1">Biến</option>
-                    <option value="2">Mảng</option>
-                    <option value="3">Chuỗi</option>
-                    <option value="4">Hàm</option>
-                    <option value="5">Vòng lặp</option>
-                    <option value="6">Javascript</option>
-                    <option value="7">JQuery</option>
+            <div id="submit" style="margin-left: 38px">
+                Lưu : <input type="text" name="file_name"/>
+                Load : <select name="file_name_load" id="" onchange="window.location.href='http://localhost/editcode/load2.php?file_name_load='+this.value">
+                    <option value="" selected>Bài demo</option>
+                    <?php foreach($name_arr as $key){ ?>
+                        <option value="<?php echo $key;?>"><?php echo $key;?></option>
+                    <?php } ?>
                 </select>
                 <input type='submit' id='submit-form' value="Submit»">
             </div>
@@ -112,7 +123,7 @@ function render($view, $vars)
             <a href='./gen.php'>Gen HTML</a> |
             <a href="#" id='use-jquery'>Use jQuery</a>
         </div>
-        <iframe src='tryit.php' onLoad="autoResize('iframeResult');" id="iframeResult" class="result_output"
+        <iframe src='<?php echo $src_ifr;?>' onLoad="autoResize('iframeResult');" id="iframeResult" class="result_output"
                 frameborder="0" name="view" src="" width="400"></iframe>
     </div>
     <div style="clear:both;"></div>
@@ -120,15 +131,6 @@ function render($view, $vars)
 
 <script src='ace/build/src/ace.js'></script>
 <script type="text/javascript">
-
-    $(document.ready(function(){
-
-        $('input[type="checkbox"]').click(function(){
-            if($this.attr("value") == "folder") {
-                $("#folder").toggle();
-            }
-        });
-    }));
     var $ = document.getElementById.bind(document);
     var dom = require("ace/lib/dom");
 
@@ -181,8 +183,6 @@ function render($view, $vars)
     jQuery("#use-jquery").click(function () {
         editor.insert(script.outerHTML);
     })
-
-
 </script>
 
 </body>

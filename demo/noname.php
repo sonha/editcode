@@ -1,12 +1,13 @@
-<html>
-<head>
-<title>Trang giới thiệu</title>
-</head>
-
-<body>
-
-<h1>CSS demo!</h1>
-<p>This is a paragraph.</p>
-
-</body>
-</html>
+<?php
+$directory = "demo/";
+        //get all text files with a .txt extension.
+        $texts = glob($directory . "*.php");
+        //print each file name
+        $name_arr = array();
+        foreach($texts as $text)
+        {
+            $name_arr[] =  $text;
+        }
+        var_dump($name_arr);
+        die();
+?>
