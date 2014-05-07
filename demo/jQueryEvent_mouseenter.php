@@ -5,18 +5,15 @@
 </script>
 <script>
 $(document).ready(function(){
-  $("#p1").hover(function(){
+  $("#p1").mouseenter(function(){
     alert("You entered p1!");
-    },
-    function(){
-    alert("Bye! You now leave p1!");
-  }); 
+  });
 });
 </script>
 </head>
 <body>
 
-<p id="p1">This is a paragraph.</p>
+<p id="p1">Enter this paragraph.</p>
 
 </body>
 </html>

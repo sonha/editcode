@@ -5,18 +5,17 @@
 </script>
 <script>
 $(document).ready(function(){
-  $("#p1").hover(function(){
-    alert("You entered p1!");
-    },
-    function(){
-    alert("Bye! You now leave p1!");
-  }); 
+  $("p").dblclick(function(){
+    $(this).hide();
+  });
 });
 </script>
 </head>
 <body>
 
-<p id="p1">This is a paragraph.</p>
+<p>If you double-click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
 
 </body>
 </html>

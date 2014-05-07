@@ -19,6 +19,7 @@ function render($view, $vars)
           href="http://sohagame.vn/wp-content/themes/sohahome/shg_frontend/images/website/favicon.ico"
           type="image/x-icon"/>
     <link href="css/style.css" rel="stylesheet">
+    <link type="text/css" href="css/stdtheme.css" rel="stylesheet">
 </head>
 <body style="background-color:#e5eecc;margin: 0;" cz-shortcut-listen="true">
 <div id="lecture" style="padding: 37px 550px;">
@@ -69,13 +70,9 @@ function render($view, $vars)
             echo "<div class='headerText1'>Success, wrote to file ($filename) and ($filename_try)</div>";
         }
     }
-    ?>
-    <?php
     $directory = "demo/";
-    //get all text files with a .txt extension.
-    $texts = glob($directory . "*.php");
-    //print each file name
-    $name_arr = array();
+    $texts = glob($directory . "*.php");//get all text files with a .txt extension.
+    $name_arr = array();//print each file name
     foreach($texts as $text)
     {
         $temp = explode('/',$text);
@@ -84,6 +81,8 @@ function render($view, $vars)
     if (empty($_POST)) {
         if(!empty($_GET['file_name_load'])) {
             $file_name_load = $_GET['file_name_load'];
+            $file_name_explode = (explode('.',$file_name_load));
+            $file_name_save = $file_name_explode[0];
             $source = file_get_contents("demo/$file_name_load");
 //            var_dump(htmlspecialchars($source));die;
             $src_ifr = 'demo/'.$file_name_load;
@@ -99,15 +98,16 @@ function render($view, $vars)
     <div id="sourcecode">
         <div class="headerText"></div>
         <form method='post'>
-            <div id="submit" style="margin-left: 38px">
-                Lưu : <input type="text" name="file_name"/>
-                Load : <select name="file_name_load" id="" onchange="window.location.href='http://localhost/editcode/admin.php?file_name_load='+this.value">
-                    <option value="" selected>Bài demo</option>
+            <div id="submit" style="margin-left: -8px">
+<!--                Lưu:<input type="text" name="file_name"/>-->
+                <input type="text" name="file_name" value="<?php echo isset($txt_filename) ? $txt_filename : $file_name_save?>"/>
+                <select name="file_name_load" id="" onchange="window.location.href='http://localhost/editcode/admin.php?file_name_load='+this.value">
+                    <option value="" selected><?php echo $file_name_load;?></option>
                     <?php foreach($name_arr as $key){ ?>
                         <option value="<?php echo $key;?>"><?php echo $key;?></option>
                     <?php } ?>
                 </select>
-                <input type='submit' id='submit-form' value="Submit»">
+                <input type='submit' id='submit-form' value="Y»">
             </div>
             <pre id='editor'><?php echo htmlspecialchars($source) ?></pre>
             <br/>
